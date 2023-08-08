@@ -17,7 +17,7 @@ import java.net.URL;
 @Controller
 public class HomeController {
 
-    private static final String apiKey = "9e2cdd8f4a024ee2fd8093fd06f46fd7";
+    private static final String apiKey = "-";
 
     @GetMapping("")
     public String getHomePage(Model model){
