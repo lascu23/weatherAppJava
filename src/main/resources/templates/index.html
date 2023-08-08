@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.w3.org/1999/xhtml"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Weather App</title>
+</head>
+<body>
+
+<div class="Api">
+    <form class='Input' action="#" th:action="@{/}" th:object="${city}" method="post">
+        <input type="text" placeholder='enter a city' name="inputCity" th:field="*{city}"/>
+        <button type='submit' ><img src="/images/magnifying-glass.png" alt="nu s-a gasit poza"></button>
+    </form>
+
+
+    <div th:if="${main}">
+        <img th:if="${main} == 'Clouds'" src="/images/clouds.png" alt="eroare poza" class="poza">
+        <img th:if="${main} == 'Drizzle'" src="/images/drizzle.png" alt="eroare poza" class="poza">
+        <img th:if="${main} == 'Rain'" src="/images/rain.png" alt="eroare poza" class="poza">
+        <img th:if="${main} == 'Snow'" src="/images/snow.png" alt="eroare poza" class="poza">
+        <img th:if="${main} == 'Thunderstorm'" src="/images/thunderstorm.png" alt="eroare poza" class="poza">
+        <img th:unless="${main eq 'Clouds' or main eq 'Drizzle' or main eq 'Rain' or main eq 'Snow' or main eq 'Thunderstorm'}" src="/images/mist.png" alt="eroare poza" class="poza">
+    </div>
+
+    <div th:if="${temp}">
+        <p th:text="${temp}" class="temp"></p>
+    </div>
+
+    <div th:if="${cityName}">
+        <p th:text="${cityName}" class="oras"></p>
+    </div>
+
+    <div th:if="${humidity}" class="containerPoze">
+        <div th:if="${humidity}" class="centreaza">
+            <img src="/images/humidity.png" alt="eroare poza" style="width: 50px; height: 50px;"><span th:text="${humidity}"></span>
+        </div>
+
+        <div th:if="${speed}" class="centreaza">
+            <img src="/images/winds-weather-symbol.png" alt="eroare poza" style="width: 50px; height: 50px;"><span th:text="${speed}"></span>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
